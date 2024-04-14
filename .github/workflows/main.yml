@@ -7,6 +7,19 @@ jobs:
   test_codebase:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Run a one-line script
-        run: pytest
+      - name: checkout code
+        uses: actions/checkout@v2
+
+      - name : set up python
+        uses : actions/set-python@v1
+        with:
+          python-version: 3.10.14
+
+      - name: install pip
+        run: python3 -m pip install --upgrade pip
+
+      - name: install dependencies
+        run: pip install -r requirements.txt
+
+      - name: run tests 
+        run: python3 -m pytest 
