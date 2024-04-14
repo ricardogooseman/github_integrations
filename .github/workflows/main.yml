@@ -1,18 +1,12 @@
-name: CI
+name: continous integration
 on:
   push:
-    branches: [ main ]
+    branches:
+      - '**'
 jobs:
-  build:
+  test_codebase:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Run a one-line script
-        run: echo Hello, world!
-
-  terdown:
-     runs-on: ubuntu-latest
-     steps:
-      - uses: actions/checout@v2
-      - name: Run a one-line script
-        run: echo goodbye everyone
+        run: pytest
